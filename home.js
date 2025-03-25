@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // HERO DIGITAL DESIGNER TEXT STAGGER MOBILE
 document.addEventListener("DOMContentLoaded", function () {
   function initGSAPAnimation() {
-    gsap.from(".heading-letter.is--mobile", {
+    gsap.from(".heading-letter-mobile", {
       y: 100,
       opacity: 0,
       duration: 0.4,
