@@ -88,8 +88,6 @@ document.addEventListener("DOMContentLoaded", function () {
         trigger: ".hero-inner",
         start: "top 80%",
         end: "bottom 20%",
-        toggleActions: "play none none none", // Plays once and does not restart
-        once: true, // Ensures animation only happens once
       },
     });
   }
@@ -98,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Listen for window resize to dynamically reinitialize animation
   window.addEventListener("resize", function () {
-    gsap.killTweensOf(".heading-letter.is--mobile"); // Kill animation on resize
+    gsap.killTweensOf(".heading-letter-mobile"); // Kill animation on resize
     initGSAPAnimation(); // Reinitialize animation
   });
 });
