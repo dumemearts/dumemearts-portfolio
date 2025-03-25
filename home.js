@@ -35,25 +35,27 @@ document.addEventListener('DOMContentLoaded', () => {
 // HERO DIGITAL DESIGNER TEXT STAGGER
 document.addEventListener("DOMContentLoaded", function () {
   function initGSAPAnimation() {
+    let isTabletOrBelow = window.innerWidth <= 991;
+
     gsap.from(".heading-letter, .heading-letter.is--space", {
       y: 100,
       opacity: 0,
       duration: 0.4,
       stagger: 0.05,
       ease: "power3.out",
-      delay: 1.3, // Initial 0.5s delay when first triggered
+      delay: 1.3,
       scrollTrigger: {
         trigger: ".hero-inner",
         start: "top 80%",
         end: "bottom 20%",
-        toggleActions: "restart none none none", // Restart every time it enters view
-        onEnter: (self) => {
-          setTimeout(() => self.animation.restart(), 500); // 0.5s delay before restarting
-        },
-        onEnterBack: (self) => {
-          setTimeout(() => self.animation.restart(), 500); // 0.5s delay when scrolling back
-        },
-        once: false,
+        toggleActions: isTabletOrBelow ? "play none none none" : "restart none none none", 
+        onEnter: isTabletOrBelow
+          ? null
+          : (self) => setTimeout(() => self.animation.restart(), 500),
+        onEnterBack: isTabletOrBelow
+          ? null
+          : (self) => setTimeout(() => self.animation.restart(), 500),
+        once: isTabletOrBelow, // Ensures it only plays once on tablet and below
       },
     });
   }
@@ -321,15 +323,28 @@ $("[tr-scroll-toggle='component']").each(function (index) {
 
 
 // CHECK MARQUEE 1
-let tickerTl2 = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".ticker-inner-wrapper",
-    start: "top bottom", // Starts when it enters the viewport
-    end: "bottom top", // Ends when leaving the viewport
-    scrub: 1, // Keeps motion smooth and linked to scroll
-  },
+function initTickerAnimation() {
+  if (window.innerWidth > 767) { // Only run above mobile breakpoint
+    let tickerTl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".ticker-inner-wrapper",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+    tickerTl2.to(".ticker-inner-wrapper", { xPercent: -25, ease: "none" });
+  }
+}
+
+// Run animation on page load
+initTickerAnimation();
+
+// Reinitialize on window resize
+window.addEventListener("resize", function () {
+  gsap.killTweensOf(".ticker-inner-wrapper"); // Kill animation on resize
+  initTickerAnimation(); // Recheck and reinitialize if needed
 });
-tickerTl2.to(".ticker-inner-wrapper", { xPercent: -25, ease: "none" });
 
 
 
