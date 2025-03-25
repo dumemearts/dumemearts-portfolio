@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
 // HERO DIGITAL DESIGNER TEXT STAGGER
 document.addEventListener("DOMContentLoaded", function () {
   function initGSAPAnimation() {
