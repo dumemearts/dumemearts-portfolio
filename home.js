@@ -74,39 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// HERO DIGITAL DESIGNER TEXT STAGGER MOBILE
-document.addEventListener("DOMContentLoaded", function () {
-  function initGSAPAnimation() {
-    gsap.from(".heading-letter-mobile", {
-      y: 100,
-      opacity: 0,
-      duration: 0.4,
-      stagger: 0.05,
-      ease: "power3.out",
-      delay: 1,
-      scrollTrigger: {
-        trigger: ".hero-inner",
-        start: "top 80%",
-        end: "bottom 20%",
-      },
-    });
-  }
-
-  initGSAPAnimation(); // Run animation check on page load
-
-  // Listen for window resize to dynamically reinitialize animation
-  window.addEventListener("resize", function () {
-    gsap.killTweensOf(".heading-letter-mobile"); // Kill animation on resize
-    initGSAPAnimation(); // Reinitialize animation
-  });
-});
-
-
-
-
-
-
-
 // SCRAMBLE TEXT
 function initScrambleOnLoad(){
   let targets = document.querySelectorAll('[data-scramble="load"]')
