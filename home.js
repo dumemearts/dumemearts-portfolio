@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// HERO DIGITAL DESIGNER TEXT STAGGER
+// HERO DIGITAL DESIGNER TEXT STAGGER DESKTOP
 document.addEventListener("DOMContentLoaded", function () {
   function initGSAPAnimation() {
     let isTabletOrBelow = window.innerWidth <= 991;
@@ -68,6 +68,43 @@ document.addEventListener("DOMContentLoaded", function () {
     initGSAPAnimation(); // Reinitialize animation
   });
 });
+
+
+
+
+
+
+// HERO DIGITAL DESIGNER TEXT STAGGER MOBILE
+document.addEventListener("DOMContentLoaded", function () {
+  function initGSAPAnimation() {
+    gsap.from(".heading-letter.is--mobile", {
+      y: 100,
+      opacity: 0,
+      duration: 0.4,
+      stagger: 0.05,
+      ease: "power3.out",
+      delay: 1,
+      scrollTrigger: {
+        trigger: ".hero-inner",
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play none none none", // Plays once and does not restart
+        once: true, // Ensures animation only happens once
+      },
+    });
+  }
+
+  initGSAPAnimation(); // Run animation check on page load
+
+  // Listen for window resize to dynamically reinitialize animation
+  window.addEventListener("resize", function () {
+    gsap.killTweensOf(".heading-letter.is--mobile"); // Kill animation on resize
+    initGSAPAnimation(); // Reinitialize animation
+  });
+});
+
+
+
 
 
 
