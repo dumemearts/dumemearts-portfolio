@@ -30,50 +30,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-// IMAGE SLIDESHOW
-function initImageCycle() {
-  document.querySelectorAll("[data-image-cycle]").forEach(cycleElement => {
-    const items = cycleElement.querySelectorAll("[data-image-cycle-item]");
-    if (items.length < 2) return;
-
-    let currentIndex = 0, intervalId;
-    const duration = 2000;
-    const isTwoItems = items.length === 2;
-
-    // Initialize: First active, others not-active
-    items.forEach((item, i) => item.setAttribute("data-image-cycle-item", i ? "not-active" : "active"));
-
-    function cycleImages() {
-      const prevIndex = currentIndex;
-      currentIndex = (currentIndex + 1) % items.length;
-
-      if (isTwoItems) {
-        // Special case: Only two images → Toggle between "previous" and "active"
-        items[prevIndex].setAttribute("data-image-cycle-item", "previous");
-      } else {
-        // Normal case: Three or more images
-        items[prevIndex].setAttribute("data-image-cycle-item", "previous");
-        setTimeout(() => items[prevIndex].setAttribute("data-image-cycle-item", "not-active"), duration);
-      }
-
-      items[currentIndex].setAttribute("data-image-cycle-item", "active");
-    }
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !intervalId) intervalId = setInterval(cycleImages, duration);
-      else clearInterval(intervalId), intervalId = null;
-    }, { threshold: 0 });
-
-    observer.observe(cycleElement);
+// H2 TEXT STAGGER DESKTOP
+document.addEventListener("DOMContentLoaded", function () {
+  gsap.utils.toArray(".heading-style-h2").forEach((triggerElement) => {
+    gsap.from(triggerElement.querySelectorAll(".heading-letter-h2"), {
+      opacity: 0,
+      y: 50,
+      duration: 0.6,
+      stagger: 0.05,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: triggerElement, // Triggers when any .heading-style-h2 is in view
+        start: "top 80%", // Start animation when the element is 80% into the viewport
+        once: true, // Only animate once
+      },
+    });
   });
-}
-// Initialize Image Cycle
-document.addEventListener('DOMContentLoaded', function() {
-  initImageCycle();
 });
-
 
 
 
@@ -99,8 +72,7 @@ splitTypes.forEach((char,i) => {
 
 
 
-
-// CHECK MARQUEE FOOTER
+// CHECK MARQUEE
 let tickerTl4 = gsap.timeline({
   scrollTrigger: {
     trigger: ".ticker-footer",
@@ -111,8 +83,6 @@ let tickerTl4 = gsap.timeline({
 });
 
 tickerTl4.to(".ticker-footer", { xPercent: -25, ease: "none" });
-
-
 
 
 
@@ -134,12 +104,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 
 
-
-
-
-
 // FOOTER CONTACT ME TEXT STAGGER
-gsap.from(".heading-style-display,.heading-style-display.is-subtract,.heading-style-display.is--next", {
+gsap.from(".heading-style-display-alt", {
   y: 100,
   opacity: 0,
   duration: 0.4,
@@ -180,6 +146,4 @@ document.addEventListener("DOMContentLoaded", function () {
     tickerAnimation.resume();
   });
 });
-
-
 
