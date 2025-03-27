@@ -120,6 +120,14 @@ gsap.from(".heading-style-display-alt", {
 });
 
 
+// FOOTER ELEMENTS VISIBLE
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".section-ticker, .footer-link-inner").forEach((el) => {
+    el.style.display = "flex";
+    el.style.opacity = "1";
+    el.style.visibility = "visible";
+  });
+});
 
 
 // FOOTER TICKER ANIMATION
