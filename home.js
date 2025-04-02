@@ -28,6 +28,75 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+
+
+
+// HERO DIGITAL DESIGNER TEXT STAGGER DESKTOP
+document.addEventListener("DOMContentLoaded", function () {
+  function initGSAPAnimation() {
+    let isTabletOrBelow = window.innerWidth <= 991;
+
+    gsap.from(".heading-letter-h1, .heading-letter-h1.is--space", {
+      y: 100,
+      opacity: 0,
+      duration: 0.4,
+      stagger: 0.05,
+      ease: "power3.out",
+      delay: 1.3,
+      scrollTrigger: {
+        trigger: ".hero-inner",
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: isTabletOrBelow ? "play none none none" : "restart none none none", 
+        onEnter: isTabletOrBelow
+          ? null
+          : (self) => setTimeout(() => self.animation.restart(), 500),
+        onEnterBack: isTabletOrBelow
+          ? null
+          : (self) => setTimeout(() => self.animation.restart(), 500),
+        once: isTabletOrBelow, // Ensures it only plays once on tablet and below
+      },
+    });
+  }
+
+  initGSAPAnimation(); // Run animation check on page load
+
+  // Listen for window resize to dynamically reinitialize animation
+  window.addEventListener("resize", function () {
+    gsap.killTweensOf(".heading-letter, .heading-letter.is--space"); // Kill animation on resize
+    initGSAPAnimation(); // Reinitialize animation
+  });
+});
+
+
+
+
+
+
+// H2 TEXT STAGGER DESKTOP
+document.addEventListener("DOMContentLoaded", function () {
+  gsap.utils.toArray(".heading-style-h2").forEach((triggerElement) => {
+    gsap.from(triggerElement.querySelectorAll(".heading-letter-h2"), {
+      opacity: 0,
+      y: 50,
+      duration: 0.6,
+      stagger: 0.05,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: triggerElement, // Triggers when any .heading-style-h2 is in view
+        start: "top 80%", // Start animation when the element is 80% into the viewport
+        once: true, // Only animate once
+      },
+    });
+  });
+});
+
+
+
+
+
+
 // PARAGRAPH SPLIT TEXT 
 const splitTypes = document.querySelectorAll('.scroll-highlight');
 splitTypes.forEach((char,i) => {
@@ -169,6 +238,37 @@ $("[tr-scroll-toggle='component']").each(function (index) {
     };
   });
 });
+
+
+
+
+
+// CHECK MARQUEE 1
+let tickerTl2 = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".ticker-inner-wrapper",
+    start: "top bottom", // Starts when it enters the viewport
+    end: "bottom top", // Ends when leaving the viewport
+    scrub: 1, // Keeps motion smooth and linked to scroll
+  },
+});
+tickerTl2.to(".ticker-inner-wrapper", { xPercent: -25, ease: "none" });
+
+
+
+
+// CHECK MARQUEE 2
+let tickerTl4 = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".ticker-footer",
+    start: "top bottom", // Starts when it enters the viewport
+    end: "bottom top", // Ends when leaving the viewport
+    scrub: 1, // Keeps motion smooth and linked to scroll
+  },
+});
+
+tickerTl4.to(".ticker-footer", { xPercent: -25, ease: "none" });
+
 
 
 
@@ -320,6 +420,9 @@ function createTextAnimations() {
   });
 }
 createTextAnimations();
+
+
+
 
 
 
@@ -712,75 +815,6 @@ initFooterTrail({
   stopDuration: 300, // Time in ms before images start fading when mouse stops
   trailLength: 5     // Number of images visible before they start fading out
 });
-
-
-
-
-
-
-// HERO DIGITAL DESIGNER TEXT STAGGER DESKTOP
-document.addEventListener("DOMContentLoaded", function () {
-  function initGSAPAnimation() {
-    let isTabletOrBelow = window.innerWidth <= 991;
-
-    gsap.from(".heading-letter-h1, .heading-letter-h1.is--space", {
-      y: 100,
-      opacity: 0,
-      duration: 0.4,
-      stagger: 0.05,
-      ease: "power3.out",
-      delay: 1.3,
-      scrollTrigger: {
-        trigger: ".hero-inner",
-        start: "top 80%",
-        end: "bottom 20%",
-        toggleActions: isTabletOrBelow ? "play none none none" : "restart none none none", 
-        onEnter: isTabletOrBelow
-          ? null
-          : (self) => setTimeout(() => self.animation.restart(), 500),
-        onEnterBack: isTabletOrBelow
-          ? null
-          : (self) => setTimeout(() => self.animation.restart(), 500),
-        once: isTabletOrBelow, // Ensures it only plays once on tablet and below
-      },
-    });
-  }
-
-  initGSAPAnimation(); // Run animation check on page load
-
-  // Listen for window resize to dynamically reinitialize animation
-  window.addEventListener("resize", function () {
-    gsap.killTweensOf(".heading-letter, .heading-letter.is--space"); // Kill animation on resize
-    initGSAPAnimation(); // Reinitialize animation
-  });
-});
-
-
-
-
-
-
-// H2 TEXT STAGGER DESKTOP
-document.addEventListener("DOMContentLoaded", function () {
-  gsap.utils.toArray(".heading-style-h2").forEach((triggerElement) => {
-    gsap.from(triggerElement.querySelectorAll(".heading-letter-h2"), {
-      opacity: 0,
-      y: 50,
-      duration: 0.6,
-      stagger: 0.05,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: triggerElement, // Triggers when any .heading-style-h2 is in view
-        start: "top 80%", // Start animation when the element is 80% into the viewport
-        once: true, // Only animate once
-      },
-    });
-  });
-});
-
-
-
-
 
 
 
