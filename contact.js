@@ -72,21 +72,6 @@ splitTypes.forEach((char,i) => {
 
 
 
-// CHECK MARQUEE
-let tickerTl4 = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".ticker-footer",
-    start: "top bottom", // Starts when it enters the viewport
-    end: "bottom top", // Ends when leaving the viewport
-    scrub: 1, // Keeps motion smooth and linked to scroll
-  },
-});
-
-tickerTl4.to(".ticker-footer", { xPercent: -25, ease: "none" });
-
-
-
-
 
 
 window.addEventListener("DOMContentLoaded", (event) => {
@@ -128,6 +113,9 @@ document.addEventListener("DOMContentLoaded", function () {
     el.style.visibility = "visible";
   });
 });
+
+
+
 
 
 // FOOTER TICKER ANIMATION

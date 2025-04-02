@@ -257,21 +257,6 @@ tickerTl2.to(".ticker-inner-wrapper", { xPercent: -25, ease: "none" });
 
 
 
-// CHECK MARQUEE 2
-let tickerTl4 = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".ticker-footer",
-    start: "top bottom", // Starts when it enters the viewport
-    end: "bottom top", // Ends when leaving the viewport
-    scrub: 1, // Keeps motion smooth and linked to scroll
-  },
-});
-
-tickerTl4.to(".ticker-footer", { xPercent: -25, ease: "none" });
-
-
-
-
 
 // RECENT PROJECTS MARQUEE
 let tickerTl3 = gsap.timeline({
@@ -420,9 +405,6 @@ function createTextAnimations() {
   });
 }
 createTextAnimations();
-
-
-
 
 
 
