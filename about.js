@@ -78,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
 // PARAGRAPH SPLIT TEXT 
 const splitTypes = document.querySelectorAll('.scroll-highlight');
 splitTypes.forEach((char,i) => {
@@ -99,10 +98,6 @@ splitTypes.forEach((char,i) => {
 
 
 
-
-
-
-
 window.addEventListener("DOMContentLoaded", (event) => {
     $(".hover-component").each(function () {
       let componentEl = $(this),
@@ -114,9 +109,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
       });
     });
 });
-
-
-
 
 
 

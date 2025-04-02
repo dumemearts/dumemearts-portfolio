@@ -105,6 +105,8 @@ gsap.from(".heading-style-display-alt", {
 });
 
 
+
+
 // FOOTER ELEMENTS VISIBLE
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".section-ticker, .footer-link-inner").forEach((el) => {

@@ -73,7 +73,6 @@ splitTypes.forEach((char,i) => {
 
 
 
-
 window.addEventListener("DOMContentLoaded", (event) => {
     $(".hover-component").each(function () {
       let componentEl = $(this),
