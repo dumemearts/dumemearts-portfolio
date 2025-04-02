@@ -243,22 +243,6 @@ $("[tr-scroll-toggle='component']").each(function (index) {
 
 
 
-// RECENT PROJECTS MARQUEE
-let tickerTl3 = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".ticker-container",
-    start: "top bottom", // Starts when it enters the viewport
-    end: "bottom top", // Ends when leaving the viewport
-    scrub: 1, // Keeps motion smooth and linked to scroll
-  },
-});
-
-tickerTl3.to(".ticker-container", { xPercent: -10, ease: "none" });
-
-
-
-
-
 
 
 // HOVER EXPERTISE SECTION
