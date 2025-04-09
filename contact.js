@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // FORM CODE
 document.addEventListener("DOMContentLoaded", function () {
-  var form = document.querySelector(".enquiry-form");
+  var form = document.querySelector(".form-wrapper");
   var successMessage = document.querySelector(".success-message");
 
   if (!form || !successMessage) {
